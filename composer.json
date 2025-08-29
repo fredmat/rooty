@@ -93,13 +93,13 @@
             "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
         ],
         "post-install-cmd": [
-            "@php scripts/publish-acf-assets.php"
+            "@php scripts/setup.php"
         ],
         "post-update-cmd": [
-            "@php scripts/publish-acf-assets.php"
+            "@php scripts/setup.php"
         ],
-        "copy-acf-assets": [
-            "@php scripts/publish-acf-assets.php"
+        "rooty-setup": [
+            "@php scripts/setup.php"
         ]
     },
     "minimum-stability": "dev",

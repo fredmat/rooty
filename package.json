@@ -2,9 +2,9 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "composer run rooty-setup && vite",
     "build": "vite build",
-    "postbuild": "composer run copy-acf-assets"
+    "postbuild": "composer run rooty-setup"
   },
   "dependencies": {
     "@vueuse/core": "^13.6.0",
