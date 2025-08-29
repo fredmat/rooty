@@ -1,0 +1,7 @@
+@theme {
+  --border-width: 1px;
+  --border-style: solid;
+  --border-color: var(--color-neutral-300);
+  --border-color-muted: var(--color-neutral-200);
+  --border-color-strong: var(--color-neutral-400);
+}

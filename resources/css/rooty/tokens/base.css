@@ -1,0 +1,21 @@
+@theme {
+  --body-font-size: 0.8125rem;
+  --body-font-weight: var(--font-weight-regular);
+  --body-line-height: 1.25rem;
+  --body-letter-spacing: 0rem;
+
+  --body-bg: var(--color-white);
+  --body-color: var(--color-neutral-800);
+
+  /** Links */
+  --link-color: var(--color-neutral-700);
+  --link-hover-color: var(--color-neutral-900);
+  --link-active-color: var(--link-color);
+  --link-text-decoration: none;
+  --link-hover-text-decoration: underline;
+  --link-active-text-decoration: underline;
+  --link-font-weight: var(--font-weight-semibold);
+}
+
+/* Dark mode overrides – must be outside @theme (??) */
+:where([data-theme="dark"], [data-theme="dark"] *) {}

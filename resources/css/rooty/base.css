@@ -1,0 +1,42 @@
+@layer base {
+  html {
+    @apply h-full;
+    font-optical-sizing: auto;
+  }
+
+  body {
+    @apply
+      block
+      m-0
+      p-0
+      min-h-full
+      h-full
+      bg-(--body-bg)
+      text-(--body-color)
+      text-(length:--body-font-size)
+      leading-(--body-line-height)
+      font-(--body-font-weight);
+
+    /* font-BAZARRRRR !!!! */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+
+/*    scrollbar-color: rgba(138, 138, 138, .75) transparent;*/
+  }
+
+  a {
+    color: var(--link-color);
+    font-weight: var(--link-font-weight);
+    text-decoration: var(--link-text-decoration);
+
+    @apply focus-ring;
+
+    &:hover {
+      color: var(--link-hover-color);
+      text-decoration: var(--link-hover-text-decoration);
+    }
+  }
+}

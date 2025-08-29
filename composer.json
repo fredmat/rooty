@@ -1,0 +1,107 @@
+{
+    "name": "fredmat/rooty",
+    "type": "project",
+    "description": "A boilerplate for building modern WordPress projects with Composer.",
+    "keywords": ["framework", "wordpress", "rooty"],
+    "license": "MIT",
+    "require": {
+        "php": "^8.3",
+        "composer/installers": "^2.3",
+        "illuminate/cache": "^12.8",
+        "illuminate/config": "^12.2",
+        "illuminate/container": "^12.2",
+        "illuminate/contracts": "^12.2",
+        "illuminate/cookie": "^12.2",
+        "illuminate/encryption": "^12.2",
+        "illuminate/events": "^12.2",
+        "illuminate/filesystem": "^12.8",
+        "illuminate/log": "^12.2",
+        "illuminate/queue": "^12.2",
+        "illuminate/support": "^12.2",
+        "illuminate/view": "^12.2",
+        "psr/container": "^1.1.1",
+        "psr/log": "^3.0",
+        "roots/bedrock-autoloader": "^1.0.4",
+        "roots/wordpress": "^6.8.2",
+        "roots/wp-password-bcrypt": "^1.2",
+        "symfony/error-handler": "^7.2",
+        "symfony/finder": "^7.2",
+        "symfony/http-foundation": "^7.2",
+        "vinkla/extended-acf": "^14.3",
+        "vinkla/headache": "^3.5",
+        "vlucas/phpdotenv": "^5.6",
+        "wpackagist-plugin/classic-editor": "^1.6"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^11.0.1",
+        "symfony/var-dumper": "^7.1",
+        "wpackagist-plugin/debug-bar": "^1.1.4",
+        "wpackagist-plugin/debug-bar-actions-and-filters-addon": "^1.5.5"
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://wpackagist.org",
+            "only": [
+                "wpackagist-plugin/*",
+                "wpackagist-theme/*"
+            ]
+        }
+    ],
+    "provide": {
+        "psr/container-implementation": "1.1|2.0",
+        "psr/log-implementation": "1.0|2.0|3.0"
+    },
+    "autoload": {
+        "files": [
+            "src/Rooty/Foundation/helpers.php"
+        ],
+        "psr-4": {
+            "App\\": "app/",
+            "Rooty\\": "src/Rooty/"
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "composer/installers": true,
+            "roots/wordpress-core-installer": true
+        },
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true
+    },
+    "extra": {
+        "rooty": {
+            "dont-discover": []
+        },
+        "installer-paths": {
+            "public/mu-plugins/{$name}": [
+                "type:wordpress-muplugin",
+                "wpackagist-plugin/classic-editor"
+            ],
+            "public/plugins/{$name}": [
+                "type:wordpress-plugin"
+            ],
+            "public/themes/{$name}": [
+                "type:wordpress-theme"
+            ]
+        },
+        "wordpress-install-dir": "public/wp"
+    },
+    "scripts": {
+        "post-root-package-install": [
+            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+        ],
+        "post-install-cmd": [
+            "@php scripts/publish-acf-assets.php"
+        ],
+        "post-update-cmd": [
+            "@php scripts/publish-acf-assets.php"
+        ],
+        "copy-acf-assets": [
+            "@php scripts/publish-acf-assets.php"
+        ]
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

@@ -1,0 +1,379 @@
+@theme {
+  --button-py: var(--spacing-1d5);
+  --button-px: var(--spacing-2d5);
+  --button-min-height: var(--spacing-8);
+
+  --button-border-width: 0rem;
+  --button-border-color: transparent;
+  --button-border-style: solid;
+
+  --button-radius: var(--radius-lg);
+
+  --button-box-shadow: none;
+
+  --button-group-gap: var(--button-border-width);
+
+  --button-bg: var(--color-primary-800);
+  --button-hover-bg: color-mix(in oklab, var(--button-bg) 95%, white 5%);
+  --button-active-bg: color-mix(in oklab, var(--button-bg) 90%, white 10%);
+
+  --button-color: var(--color-white);
+  --button-hover-color: var(--button-color);
+  --button-active-color: var(--button-color);
+
+  --button-outline-color: var(--button-bg);
+  --button-textual-color: var(--button-bg);
+  --button-raised-color: var(--button-bg);
+  --button-raised-shadow:
+    0 3px 1px -2px rgba(0,0,0,0.2),
+    0 2px 2px 0 rgba(0,0,0,0.14),
+    0 1px 5px 0 rgba(0,0,0,0.12);
+
+  --button-font-size: var(--body-font-size);
+  --button-line-height: var(--body-line-height);
+  --button-font-weight: var(--font-weight-medium-alt);
+  --button-letter-spacing: var(--body-letter-spacing);
+
+  --button-disable-opacity: 0.6;
+  --button-transition: none;
+}
+
+@layer components {
+  .button {
+    @apply
+      inline-flex
+      items-center
+      justify-center
+      gap-x-(--spacing-1d5)
+      min-h-(--button-min-height)
+      py-(--button-py)
+      px-(--button-px)
+      border-(length:--button-border-width)
+      border-(--button-border-color)
+      border-solid
+      rounded-(--button-radius)
+      shadow-(--button-box-shadow)
+      bg-(--button-bg)
+      text-(--button-color)
+      font-(--button-font-weight)
+      text-(length:--button-font-size)
+      leading-(--button-line-height)
+      tracking-(--button-letter-spacing)
+      appearance-none
+      select-none
+      whitespace-normal
+      no-underline
+      cursor-pointer
+      focus-ring
+      transition-(--button-transition);
+  }
+
+  .button:hover:not(:disabled) {
+    @apply bg-(--button-hover-bg) text-(--button-hover-color);
+  }
+
+  .button:active:not(:disabled) {
+    @apply bg-(--button-active-bg) text-(--button-active-color);
+  }
+
+  .button:disabled,
+  [aria-disabled="true"] {
+    @apply opacity-(--button-disable-opacity) cursor-default pointer-events-none;
+  }
+
+  .button.button--xs {
+    --button-py: var(--spacing-1);
+    --button-px: var(--spacing-2);
+    --button-min-height: var(--spacing-6);
+    --button-font-size: var(--text-2xs);
+    --button-line-height: var(--text-2xs--line-height);
+    --button-radius: var(--radius-md);
+  }
+
+  .button.button--sm {
+    --button-py: var(--spacing-1d5);
+    --button-px: var(--spacing-3);
+    --button-min-height: var(--spacing-7);
+    --button-font-size: var(--text-xs);
+    --button-line-height: var(--text-xs--line-height);
+    --button-radius: var(--radius-lg);
+  }
+
+  .button.button--lg {
+    --button-py: var(--spacing-2);
+    --button-px: var(--spacing-3);
+    --button-min-height: var(--spacing-9);
+    --button-radius: var(--radius-lg);
+    @apply gap-x-(--spacing-2);
+  }
+
+  .button.button--xl {
+    --button-py: var(--spacing-2d5);
+    --button-px: var(--spacing-3d5);
+    --button-min-height: var(--spacing-10);
+    --button-radius: var(--radius-lg);
+    --button-font-size: var(--text-sm);
+    --button-line-height: var(--text-sm--line-height);
+    @apply gap-x-(--spacing-2);
+  }
+
+  /**
+   * Button Pill (rounded attr)
+   */
+  .button--pill {
+    @apply rounded-full px-[calc(var(--button-px)+var(--spacing-0d5))];
+  }
+
+  /**
+   * Button Icon
+   */
+  .button .button-icon { @apply block w-4 h-4 m-0 shrink-0; }
+
+  .button .button-icon > svg,
+  .button .button-icon > img,
+  .button .button-icon > * { @apply w-full h-full block; }
+
+  .button.button--xs .button-icon { @apply w-3d5 h-3d5; }
+  .button.button--sm .button-icon { @apply w-4 h-4; }
+  .button.button--lg .button-icon { @apply w-4 h-4; }
+  .button.button--xl .button-icon { @apply w-4d5 h-4d5; }
+
+  .button .button-label { @apply min-w-0 whitespace-normal; }
+  .button.button--with-label .button-icon:not(.button-icon--end) { @apply -ml-0d5; }
+  .button.button--with-label .button-icon--end { @apply -mr-0d5; }
+
+  .button.button--icon-only {
+    --button-py: 0;
+    --button-px: 0;
+    --button-min-height: auto;
+    @apply w-8 h-8;
+  }
+
+  .button.button--icon-only.button--xs { @apply w-6 h-6; }
+  .button.button--icon-only.button--sm { @apply w-7 h-7; }
+  .button.button--icon-only.button--lg { @apply w-9 h-9; }
+  .button.button--icon-only.button--xl { @apply w-10 h-10; }
+
+  /**
+   * Severity Colors
+   */
+  .button.button--info,
+  .button.button--success,
+  .button.button--warn,
+  .button.button--help,
+  .button.button--danger {
+    --button-hover-bg: color-mix(in oklab, var(--button-bg) 95%, black 5%);
+    --button-active-bg: color-mix(in oklab, var(--button-bg) 90%, black 10%);
+  }
+
+  .button.button--secondary {
+    --button-bg: var(--color-neutral-100);
+    --button-hover-bg: color-mix(in oklab, var(--button-bg) 97%, black 3%);
+    --button-active-bg: color-mix(in oklab, var(--button-bg) 94%, black 6%);
+    --button-color: var(--color-neutral-800);
+    --button-hover-color: var(--button-color);
+    --button-active-color: var(--button-color);
+  }
+
+  .button.button--info {
+    --button-bg: var(--color-info-500);
+    --button-color: var(--color-white);
+    --button-hover-color: var(--button-color);
+    --button-active-color: var(--button-color);
+  }
+
+  .button.button--success {
+    --button-bg: var(--color-success-600);
+    --button-color: var(--color-white);
+    --button-hover-color: var(--button-color);
+    --button-active-color: var(--button-color);
+  }
+
+  .button.button--warn {
+    --button-bg: var(--color-warn-400);
+    --button-color: var(--color-white);
+    --button-hover-color: var(--button-color);
+    --button-active-color: var(--button-color);
+  }
+
+  .button.button--help {
+    --button-bg: var(--color-help-500);
+    --button-color: var(--color-white);
+    --button-hover-color: var(--button-color);
+    --button-active-color: var(--button-color);
+  }
+
+  .button.button--danger {
+    --button-bg: var(--color-danger-500);
+    --button-color: var(--color-white);
+    --button-hover-color: var(--button-color);
+    --button-active-color: var(--button-color);
+  }
+
+  .button.button--contrast {
+    --button-bg: var(--body-color);
+    --button-hover-bg: color-mix(in oklab, var(--button-bg) 95%, white 5%);
+    --button-active-bg: color-mix(in oklab, var(--button-bg) 90%, white 10%);
+    --button-color: var(--body-bg);
+    --button-hover-color: var(--button-color);
+    --button-active-color: var(--button-color);
+  }
+
+  /**
+   * Outline Variant
+   */
+  .button.button--outline {
+    --button-border-width: 0;
+    --button-border-color: transparent;
+
+    --button-group-gap: 1px;
+
+    --button-bg: transparent;
+    --button-color: var(--button-outline-color);
+
+    --button-hover-bg: color-mix(in oklab, var(--button-outline-color) 4%, transparent);
+    --button-active-bg: color-mix(in oklab, var(--button-outline-color) 8%, transparent);
+    --button-hover-color: var(--button-color);
+    --button-active-color: var(--button-color);
+
+    --button-box-shadow:
+      rgba(0, 0, 0, 0) 0 0 0 0,
+      rgba(0, 0, 0, 0) 0 0 0 0,
+      rgba(0, 0, 0, 0) 0 0 0 0,
+      var(--button-outline-color) 0 0 0 1px inset;
+      /*rgba(0, 0, 0, 0.03) 0 1px 2px 0;*/
+  }
+
+  .button.button--outline:hover:not(:disabled) {
+    /*--button-box-shadow:
+      rgba(0, 0, 0, 0) 0 0 0 0,
+      rgba(0, 0, 0, 0) 0 0 0 0,
+      rgba(0, 0, 0, 0) 0 0 0 0,
+      var(--button-outline-color) 0 0 0 2px inset;*/
+      /*rgba(0, 0, 0, 0.04) 0 2px 4px 0;*/
+  }
+
+  .button.button--primary { --button-outline-color: color-mix(in oklab, var(--color-neutral-400) 60%, transparent); }
+  .button.button--primary.button--outline {
+    --button-color: var(--color-neutral-600);
+    --button-hover-bg: color-mix(in oklab, var(--button-outline-color) 15%, transparent);
+    --button-active-bg: color-mix(in oklab, var(--button-outline-color) 25%, transparent);
+  }
+
+  .button.button--secondary { --button-outline-color: color-mix(in oklab, var(--color-neutral-400) 60%, transparent); }
+  .button.button--secondary.button--outline {
+    --button-color: color-mix(in oklab, var(--color-neutral-600) 70%, transparent);
+    --button-hover-bg: color-mix(in oklab, var(--button-outline-color) 15%, transparent);
+    --button-active-bg: color-mix(in oklab, var(--button-outline-color) 25%, transparent);
+  }
+
+  .button.button--info      { --button-outline-color: var(--color-info-500); }
+  .button.button--success   { --button-outline-color: var(--color-success-600); }
+  .button.button--warn      { --button-outline-color: var(--color-warn-500); }
+  .button.button--help      { --button-outline-color: var(--color-help-500); }
+  .button.button--danger    { --button-outline-color: var(--color-danger-500); }
+  .button.button--contrast  { --button-outline-color: var(--body-color); }
+
+  /**
+   * Textual Variant
+   */
+  .button.button--textual {
+    --button-border-width: 0;
+    --button-border-color: transparent;
+
+    --button-group-gap: 0;
+
+    --button-bg: transparent;
+    --button-color: var(--button-textual-color);
+
+    --button-hover-bg: color-mix(in oklab, var(--button-textual-color) 4%, transparent);
+    --button-active-bg: color-mix(in oklab, var(--button-textual-color) 8%, transparent);
+    --button-hover-color: var(--button-color);
+    --button-active-color: var(--button-color);
+
+    --button-box-shadow: none;
+  }
+
+  .button.button--primary   { --button-textual-color: var(--button-outline-color); }
+  .button.button--secondary { --button-textual-color: var(--button-outline-color); }
+  .button.button--info      { --button-textual-color: var(--button-outline-color); }
+  .button.button--success   { --button-textual-color: var(--button-outline-color); }
+  .button.button--warn      { --button-textual-color: var(--button-outline-color); }
+  .button.button--help      { --button-textual-color: var(--button-outline-color); }
+  .button.button--danger    { --button-textual-color: var(--button-outline-color); }
+  .button.button--contrast  { --button-textual-color: var(--button-outline-color); }
+
+  .button.button--primary.button--textual {
+    --button-color: var(--color-neutral-600);
+    --button-hover-bg: color-mix(in oklab, var(--button-textual-color) 15%, transparent);
+    --button-active-bg: color-mix(in oklab, var(--button-textual-color) 25%, transparent);
+  }
+
+  .button.button--secondary.button--textual {
+    --button-color: color-mix(in oklab, var(--color-neutral-600) 70%, transparent);
+    --button-hover-bg: color-mix(in oklab, var(--button-textual-color) 15%, transparent);
+    --button-active-bg: color-mix(in oklab, var(--button-textual-color) 25%, transparent);
+  }
+
+  /**
+   * Raised Variant
+   */
+  .button.button--raised {
+    --button-border-width: 0;
+    --button-border-color: transparent;
+
+    --button-group-gap: 0;
+
+    --button-bg: transparent;
+    --button-color: var(--button-raised-color);
+
+    --button-hover-bg: color-mix(in oklab, var(--button-raised-color) 4%, transparent);
+    --button-active-bg: color-mix(in oklab, var(--button-raised-color) 8%, transparent);
+    --button-hover-color: var(--button-color);
+    --button-active-color: var(--button-color);
+
+    --button-box-shadow: var(--button-raised-shadow);
+  }
+
+  .button.button--primary   { --button-raised-color: var(--button-outline-color); }
+  .button.button--secondary { --button-raised-color: var(--button-outline-color); }
+  .button.button--info      { --button-raised-color: var(--button-outline-color); }
+  .button.button--success   { --button-raised-color: var(--button-outline-color); }
+  .button.button--warn      { --button-raised-color: var(--button-outline-color); }
+  .button.button--help      { --button-raised-color: var(--button-outline-color); }
+  .button.button--danger    { --button-raised-color: var(--button-outline-color); }
+  .button.button--contrast  { --button-raised-color: var(--button-outline-color); }
+
+  .button.button--primary.button--raised {
+    --button-color: var(--color-neutral-600);
+    --button-hover-bg: color-mix(in oklab, var(--button-raised-color) 15%, transparent);
+    --button-active-bg: color-mix(in oklab, var(--button-raised-color) 25%, transparent);
+  }
+
+  .button.button--secondary.button--raised {
+    --button-color: color-mix(in oklab, var(--color-neutral-600) 70%, transparent);
+    --button-hover-bg: color-mix(in oklab, var(--button-raised-color) 15%, transparent);
+    --button-active-bg: color-mix(in oklab, var(--button-raised-color) 25%, transparent);
+  }
+
+  /**
+   * Button Link
+   */
+  .button--link {
+    --button-border-width: 0rem;
+    --button-border-color: transparent;
+    --button-box-shadow: none;
+    --button-bg: transparent;
+    --button-hover-bg: transparent;
+    --button-active-bg: transparent;
+    --button-color: var(--link-color);
+    --button-hover-color: var(--link-hover-color);
+    --button-active-color: var(--link-active-color);
+    --button-font-weight: var(--body-font-weight);
+
+    text-decoration: var(--link-text-decoration);
+
+    &:hover { text-decoration: var(--link-hover-text-decoration); }
+    &:active { text-decoration: var(--link-active-text-decoration); }
+  }
+}

@@ -1,0 +1,11 @@
+@layer components {
+  .button-group { @apply inline-flex align-middle; }
+
+  .button-group .button:not(:first-child) {
+    margin-inline-start: calc(var(--button-group-gap) * -1);
+  }
+
+  .button-group .button:first-child { @apply rounded-r-none; }
+  .button-group .button:not(:first-child):not(:last-child) { @apply rounded-none; }
+  .button-group .button:last-child { @apply rounded-l-none; }
+}

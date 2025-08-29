@@ -1,0 +1,7 @@
+@utility text-body {
+  @apply text-(--body-color);
+}
+
+@utility bg-body {
+  @apply bg-(--body-bg);
+}

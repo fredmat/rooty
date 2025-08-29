@@ -1,0 +1,49 @@
+@layer component {
+  .ui-frame-header {
+    @apply shadow-(--header-box-shadow);
+  }
+
+  .ui-header {
+    @apply
+      relative
+      flex
+      shrink-0
+      items-center
+      border-0
+      h-full
+      px-4;
+  }
+
+  .ui-header .button {
+    --button-min-w: 1.75rem;
+    --button-min-h: 1.75rem;
+  }
+
+  .ui-header__viewports {
+    @apply
+      min-w-0
+      max-w-full
+      flex-none
+      ml-1;
+
+  }
+
+  .ui-header__actions {
+    @apply
+      ml-4
+      min-w-0
+      max-w-full
+      flex
+      items-center
+      flex-none
+      h-full;
+  }
+
+  .ui-header__actions .button {
+    --button-min-w: var(--spacing-24);
+    --button-py-xs: var(--spacing-1d5);
+    --button-px-xs: var(--spacing-3);
+
+    @apply rounded-1d5;
+  }
+}

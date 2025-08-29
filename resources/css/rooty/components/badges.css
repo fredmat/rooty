@@ -1,0 +1,98 @@
+@theme {
+  --badge-py: var(--spacing-1);
+  --badge-px: var(--spacing-2);
+
+  --badge-bg: inherit;
+  --badge-color: inherit;
+
+  --badge-ring-color: transparent;
+
+  --badge-border-radius: var(--radius-md);
+
+  --badge-font-size: var(--text-xs);
+  --badge-font-weight: var(--font-weight-medium);
+  --badge-line-height: var(--text-xs--line-height);
+}
+
+@layer components {
+  .badge {
+
+    --tw-ring-color: var(--badge-ring-color);
+
+    @apply
+      inline-flex
+      items-center
+      py-(--badge-py)
+      px-(--badge-px)
+      rounded-(--badge-border-radius)
+      bg-(--badge-bg)
+      text-(--badge-color)
+      text-(length:--badge-font-size)
+      leading-(--badge-line-height)
+      font-(--badge-font-weight)
+      ring-1
+      ring-inset
+      focus-ring
+    ;
+  }
+
+  .badge[data-variant="neutral"] {
+    --badge-bg: var(--color-neutral-50);
+    --badge-color: var(--color-neutral-600);
+    --badge-ring-color: color-mix(in oklab, var(--color-neutral-500) 10%, transparent);
+
+    &[data-flat] {
+      --badge-bg: color-mix(in oklab, var(--color-neutral-300) 40%, transparent);
+    }
+  }
+
+  .badge[data-variant="info"] {
+    --badge-bg: var(--color-blue-50);
+    --badge-color: var(--color-blue-700);
+    --badge-ring-color: color-mix(in oklab, var(--color-blue-700) 10%, transparent);
+
+    &[data-flat] {
+      --badge-bg: color-mix(in oklab, var(--color-blue-300) 35%, transparent);
+    }
+  }
+
+  .badge[data-variant="success"] {
+    --badge-bg: var(--color-green-50);
+    --badge-color: var(--color-green-700);
+    --badge-ring-color: color-mix(in oklab, var(--color-green-600) 20%, transparent);
+
+    &[data-flat] {
+      --badge-bg: color-mix(in oklab, var(--color-green-300) 30%, transparent);
+    }
+  }
+
+  .badge[data-variant="warning"] {
+    --badge-bg: var(--color-yellow-50);
+    --badge-color: var(--color-yellow-800);
+    --badge-ring-color: color-mix(in oklab, var(--color-yellow-600) 20%, transparent);
+
+    &[data-flat] {
+      --badge-bg: color-mix(in oklab, var(--color-yellow-300) 30%, transparent);
+    }
+  }
+
+  .badge[data-variant="danger"] {
+    --badge-bg: var(--color-red-50);
+    --badge-color: var(--color-red-700);
+    --badge-ring-color: color-mix(in oklab, var(--color-red-600) 10%, transparent);
+
+    &[data-flat] {
+      --badge-bg: color-mix(in oklab, var(--color-red-300) 30%, transparent);
+    }
+
+    /** Flat */
+    .badge[data-flat] {
+      --badge-ring-color: transparent;
+    }
+
+    /** Pill */
+    .badge[data-pill] {
+      --badge-border-radius: calc(infinity * 1px);
+    }
+  }
+}

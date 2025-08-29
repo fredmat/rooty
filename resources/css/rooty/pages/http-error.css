@@ -1,0 +1,41 @@
+@theme {
+  --http-error-bg: var(--body-bg);
+  --http-error-color: var(--body-color);
+
+}
+
+@layer components {
+  body.http-error {
+    @apply
+      m-0
+      p-0
+      w-full
+      h-auto
+      min-h-0
+      overflow-x-hidden
+      bg-(--http-error-bg)
+      text-(--http-error-color)
+      text-sm;
+  }
+
+  /*body.http-error-- {
+    --http-error-bg: ;
+    --http-error-color: ;
+  }*/
+
+  .http-error__content {
+    @apply p-0 pb-8 m-8 max-w-150;
+  }
+
+  .http-error__title {
+    @apply my-4 text-2xl font-extrabold;
+  }
+
+  .http-error__message {
+    @apply my-4;
+  }
+
+  .http-error__actions {
+    @apply my-4;
+  }
+}

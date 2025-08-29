@@ -1,0 +1,6 @@
+@theme {
+  --focus-ring-width: .125rem;
+  --focus-ring-offset: .0625rem;
+  --focus-ring-color: var(--color-blue-600);
+  --focus-ring-style: solid;
+}

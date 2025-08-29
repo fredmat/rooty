@@ -1,0 +1,18 @@
+@theme {
+  --layout-text-color: var(--color-gray-800);
+  --layout-bg-color: var(--color-white);
+
+  --layout-header-bg: var(--layout-bg-color);
+  --layout-header-text: var(--layout-text-color);
+  --layout-header-height: 3.5rem;
+  --layout-header-box-shadow: 0 .125rem .0625rem #0000000d,0 0 .0625rem #42474c73;
+
+  --layout-sidebar-aux-bg: var(--layout-bg-color);
+  --layout-sidebar-aux-text: var(--layout-text-color);
+
+  --layout-sidebar-bg: var(--layout-bg-color);
+  --layout-sidebar-text: var(--layout-text-color);
+
+  --layout-main-bg: var(--layout-bg-color);
+  --layout-main-text: var(--layout-text-color);
+}

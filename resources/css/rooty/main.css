@@ -1,0 +1,39 @@
+@import "tailwindcss";
+
+@source "../../../../storage/framework/views/*.php";
+@source "../../../**/*.blade.php";
+@source "../../../**/*.js";
+@source "../../../**/*.vue";
+
+/** Themes */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+/** Tokens */
+@import "./tokens/core";
+@import "./tokens/fonts";
+@import "./tokens/colors";
+@import "./tokens/spacing";
+@import "./tokens/borders";
+@import "./tokens/radius";
+@import "./tokens/focus-ring";
+@import "./tokens/base";
+
+/** Global */
+@import "./base";
+
+/** Utilities */
+@import "./utilities/focus-ring";
+@import "./utilities/body";
+
+/** Layouts */
+@import "./pages/http-error";
+
+/** Components */
+@import "./components/kbd";
+@import "./components/buttons";
+@import "./components/button-group";
+@import "./components/badges";
+@import "./components/tooltips";
+
+/** Theme Editor */
+@import './editor/main.css';

@@ -1,0 +1,185 @@
+@theme {
+  --tooltip-py: var(--spacing-1);
+  --tooltip-px: var(--spacing-2d5);
+
+  --tooltip-font-size: var(--text-xs);
+  --tooltip-line-height: var(--text-xs--line-height);
+  --tooltip-font-weight: var(--font-weight-normal);
+  --tooltip-letter-spacing: var(--tracking-normal);
+
+  --tooltip-box-color: var(--color-gray-900);
+  --tooltip-box-bg: var(--color-white);
+  --tooltip-box-shadow: var(--shadow-sm);
+  --tooltip-backdrop-bg: var(--color-white);
+
+  --tooltip-border-width: 1px;
+  --tooltip-border-color: color-mix(in oklab, var(--color-gray-800) 15%, transparent);
+  --tooltip-border-radius: var(--spacing-2);
+
+  --tooltip-arrow-bg: var(--color-white);
+  --tooltip-arrow-border-color: color-mix(in oklab, var(--color-gray-800) 25%, transparent);
+  --tooltip-arrow-svg-color: var(--color-pink-400);
+}
+
+.tippy-box[data-theme~="ui-light"] {
+  @apply
+    bg-(--tooltip-box-bg)
+    bg-clip-padding
+    shadow-(--tooltip-box-shadow)
+    rounded-(--tooltip-border-radius)
+    border-(length:--tooltip-border-width)
+    border-solid
+    border-(--tooltip-border-color)
+  ;
+}
+
+.tippy-box[data-theme~="ui-light"] > .tippy-backdrop {
+  @apply bg-(--tooltip-backdrop-bg);
+}
+
+.tippy-box[data-theme~="ui-light"] > .tippy-arrow:after,
+.tippy-box[data-theme~="ui-light"] > .tippy-svg-arrow:after {
+  @apply
+    content-['']
+    absolute
+    -z-1;
+}
+
+.tippy-box[data-theme~="ui-light"] > .tippy-arrow:after {
+  @apply
+    border-transparent
+    border-solid;
+}
+
+
+
+
+/** Top */
+.tippy-box[data-theme~="ui-light"][data-placement^="top"] > .tippy-arrow:before {
+  @apply border-t-(--tooltip-arrow-bg);
+}
+
+.tippy-box[data-theme~="ui-light"][data-placement^="top"] > .tippy-arrow:after {
+  @apply
+    top-[17px]
+    left-[1px]
+    border-t-[7px]
+    border-t-(--tooltip-arrow-border-color)
+    border-b-0
+    border-x-[7px];
+}
+
+.tippy-box[data-theme~="ui-light"][data-placement^="top"] > .tippy-svg-arrow > svg {
+  @apply top-[16px];
+}
+
+.tippy-box[data-theme~="ui-light"][data-placement^="top"] > .tippy-svg-arrow:after {
+  @apply top-[17px];
+}
+
+
+
+
+/** Bottom */
+.tippy-box[data-theme~="ui-light"][data-placement^="bottom"] > .tippy-arrow:before {
+  @apply
+    bottom-[16px]
+    border-b-(--tooltip-arrow-bg);
+}
+
+.tippy-box[data-theme~="ui-light"][data-placement^="bottom"] > .tippy-arrow:after {
+  @apply
+    bottom-[17px]
+    left-[1px]
+    border-b-[7px]
+    border-b-(--tooltip-arrow-border-color)
+    border-t-0
+    border-x-[7px];
+}
+
+.tippy-box[data-theme~="ui-light"][data-placement^="bottom"] > .tippy-svg-arrow > svg {
+  @apply bottom-[16px];
+}
+
+.tippy-box[data-theme~="ui-light"][data-placement^="bottom"] > .tippy-svg-arrow:after {
+  @apply bottom-[17px];
+}
+
+
+
+
+/** Left */
+.tippy-box[data-theme~="ui-light"][data-placement^="left"] > .tippy-arrow:before {
+  @apply border-l-(--tooltip-arrow-bg);
+}
+
+.tippy-box[data-theme~="ui-light"][data-placement^="left"] > .tippy-arrow:after {
+  @apply
+    left-[17px]
+    top-[1px]
+    border-l-[7px]
+    border-l-(--tooltip-arrow-border-color)
+    border-r-0
+    border-y-[7px];
+}
+
+.tippy-box[data-theme~="ui-light"][data-placement^="left"] > .tippy-svg-arrow > svg {
+  @apply left-[11px];
+}
+
+.tippy-box[data-theme~="ui-light"][data-placement^="left"] > .tippy-svg-arrow:after {
+  @apply left-[12px];
+}
+
+
+
+
+/** Right */
+.tippy-box[data-theme~="ui-light"][data-placement^="right"] > .tippy-arrow:before {
+  @apply
+    right-[16px]
+    border-r-(--tooltip-arrow-bg);
+}
+
+.tippy-box[data-theme~="ui-light"][data-placement^="right"] > .tippy-arrow:after {
+  @apply
+    right-[17px]
+    top-[1px]
+    border-r-[7px]
+    border-r-(--tooltip-arrow-border-color)
+    border-l-0
+    border-y-[7px];
+}
+
+.tippy-box[data-theme~="ui-light"][data-placement^="right"] > .tippy-svg-arrow > svg {
+  @apply right-[11px];
+}
+
+.tippy-box[data-theme~="ui-light"][data-placement^="right"] > .tippy-svg-arrow:after {
+  @apply right-[12px];
+}
+
+
+
+
+/** Content */
+.tippy-box[data-theme~="ui-light"] > .tippy-content {
+  @apply
+    py-(--tooltip-py)
+    px-(--tooltip-px)
+    text-(length:--tooltip-font-size)
+    text-(--tooltip-box-color)
+    font-(--tooltip-font-weight)
+    leading-(--tooltip-line-height)
+    whitespace-normal
+    tracking-(--tooltip-letter-spacing);
+}
+
+
+
+
+
+
+.tippy-box[data-theme~="ui-light"] > .tippy-svg-arrow {
+  @apply fill-(--tooltip-arrow-svg-color);
+}

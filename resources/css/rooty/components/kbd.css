@@ -1,0 +1,44 @@
+@theme {
+  --kbd-size: 1.25rem;
+  --kbd-margin: 0;
+  --kbd-padding: var(--spacing-0d5) var(--spacing-1);
+  --kbd-content-spacing: var(--spacing-2);
+
+  --kbd-bg: color-mix(in oklab, var(--color-gray-200) 50%, var(--color-gray-50) 50%);
+  --kbd-color: var(--color-gray-600);
+
+  --kbd-border-radius: var(--radius-sm);
+  --kbd-shadow: none;
+
+  --kbd-font-size: var(--text-xs);
+  --kbd-line-height: 1;
+  --kbd-font-weight: var(--font-weight-medium);
+}
+
+@layer component {
+  kbd {
+    @apply
+      inline-flex
+      items-center
+      justify-center
+      text-center
+      m-(--kbd-margin)
+      p-(--kbd-padding)
+      h-(--kbd-size)
+      min-w-(--kbd-size)
+      bg-(--kbd-bg)
+      rounded-(--kbd-border-radius)
+      shadow-(--kbd-shadow)
+      text-(--kbd-color)
+      text-(length:--kbd-font-size)
+      font-(--kbd-font-weight)
+      leading-(--kbd-line-height)
+      select-none
+      font-sans
+    ;
+
+    &:first-child {
+      @apply ms-(--kbd-content-spacing);
+    }
+  }
+}

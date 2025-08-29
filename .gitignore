@@ -1,0 +1,76 @@
+# phpdoc
+/.phpdoc
+phpdoc.xml
+
+# Node.js
+/node_modules
+npm-debug.log*
+yarn-error.log*
+
+# Test outputs and coverage
+/coverage
+/coverage/*
+/.nyc_output
+/phpunit.xml.cache
+/jest.config.js
+
+# Build artifacts and caches
+/public/build
+/public/hot
+/public/assets
+/public/storage
+/public/mix-manifest.json
+/.vite
+/.cache
+
+# WordPress public files
+/public/languages
+/public/upgrade
+/public/uploads
+/public/wp
+/public/debug.log
+/public/xmlrpc.php
+/public/license.txt
+/public/readme.html
+/public/mu-plugins/*
+!/public/mu-plugins/mu-plugins.php
+/public/plugins/*
+!/public/plugins/index.php
+
+# PHP / Env
+/vendor
+.env
+.env.backup
+.env.testing
+.env.production
+
+# Lock files
+composer.lock
+package-lock.json
+
+# Storage
+/storage/vite
+/storage/framework/cache/*
+/storage/framework/views/*
+/storage/*.log
+/storage/*.key
+
+# IDE
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+.AppleDouble
+.LSOverride
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Docker
+/docker-compose.override.yml
+.docker/
+
+*.bak
+*.key
+*.old
